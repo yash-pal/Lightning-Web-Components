@@ -1,33 +1,33 @@
 <template>
-    <lightning-card title="Leave Requests" icon-name="custom:custom63">
-            <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-                    
-                <thead>
-                    <template if:true={contacts.data}>
-                        <template for:each={contacts.data} for:item="contact">
-                            <tr class="slds-line-height_reset" key={contact.Id}>
-                                <th class="" data-scope="col" title="First Name " aria-label="First Name"> 
-                                        <div class="slds-truncate" title={contact.Id}>{contact.FirstName}</div>
-                                </th>
-                                <th class="" data-scope="col" title="Last Name"> 
-                                    <div class="slds-truncate" title={contact.Name}>{contact.LastName}</div>
-                                </th>
-                                <th class="" data-scope="col" title="Email">
-                                    <div class="slds-truncate" title={contact.Id}>{contact.Email}</div>
-                                </th>
-                                <th class="" data-scope="col">
-                                    <div class="slds-truncate" title=""></div>
-                                </th>
-                                <th data-label="Action" data-scope="row">
-                                    <div class="slds-truncate" title="Action">
-                                        <lightning-button variant="base" data-key={contact.Id} label="Accept" title="Base action" onclick={handleEdit} class="slds-m-left_x-small"></lightning-button>
-                                        <lightning-button variant="base" data-key={contact.Id} label="Reject" title="Base action" onclick={handleDelete} class="slds-m-left_x-small"></lightning-button>
-                                    </div>
-                                </th>
-                            </tr>
-                        </template>
+        <lightning-card title="Leave Requests" icon-name="custom:custom63">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+            
+            <thead>
+                <template if:true={contacts.data}>
+                    <template for:each={contacts.data} for:item="contact">
+                        <tr class="slds-line-height_reset" key={contact.Id}>
+                            <th class="" data-scope="col" title="First Name "> 
+                                <div class="slds-truncate" title={contact.Id}>{contact.FirstName}</div>
+                            </th>
+                            <th class="" data-scope="col" title="Last Name"> 
+                                <div class="slds-truncate" title={contact.Name}>{contact.LastName}</div>
+                            </th>
+                            <th class="" data-scope="col" title="Email">
+                                <div class="slds-truncate" title={contact.Id}>{contact.Email}</div>
+                            </th>
+                            <th class="" data-scope="col">
+                                <div class="slds-truncate" title=""></div>
+                            </th>
+                            <th data-label="Action" data-scope="row">
+                                <div class="slds-truncate" title="Action">
+                                    <lightning-button variant="base" data-key={contact.Id} label="Accept" title="Base action" onclick={handleEdit} class="slds-m-left_x-small"></lightning-button>
+                                    <lightning-button variant="base" data-key={contact.Id} label="Reject" title="Base action" onclick={handleDelete} class="slds-m-left_x-small"></lightning-button>
+                                </div>
+                            </th>
+                        </tr>
                     </template>
-                </thead>
-            </table>
-        </lightning-card>    
-</template>
+                </template>
+            </thead>
+        </table>
+        </lightning-card>
+    </template>
