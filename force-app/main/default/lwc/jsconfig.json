@@ -3,8 +3,11 @@
         "experimentalDecorators": true,
         "baseUrl": ".",
         "paths": {
-            "c/leaveRequest": [
-                "leaveRequest/leaveRequest.js"
+            "c/lwcTable": [
+                "lwcTable/lwcTable.js"
+            ],
+            "c/sample": [
+                "sample/sample.js"
             ]
         }
     },
