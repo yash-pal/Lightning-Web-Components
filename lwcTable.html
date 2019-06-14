@@ -1,0 +1,86 @@
+<template>
+    <lightning-card title="Leave Requests" icon-name="action:submit_for_approval">
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-text-align_centers">
+        
+            <thead >
+               
+                <tr class="slds-text-align_center" >
+                        <!---<th class="" data-scope="col" title="title"> 
+                               TITLE
+                        </th>-->
+                        <th class="slds-text-align_center" data-scope="col" title="First Name " aria-label="First Name"> 
+
+                                FIRST NAME
+                        </th>
+                        <th class="slds-text-align_center" data-scope="col" title="Last Name"> 
+                                LAST NAME
+                        </th>
+                        <th class="slds-text-align_center" data-scope="col" title="Email">
+                                EMAIL
+                        </th>
+                        <th class="slds-text-align_center" data-scope="col" title="Action" align="center"> 
+                            ACTION
+                        </th>
+                    </tr> 
+            </thead>
+        
+            <template if:true={contacts.data} aria-readonly="false">
+                <template for:each={contacts.data} for:item="contact">
+                    <tr class="slds-line-height_reset" key={contact.Id}>
+                       <!--- <th class="" data-scope="col" title="title"> 
+                            <div class="slds-truncate" title={contact.Id}>{contact.Title}</div>
+                        </th>-->
+                        <th class="slds-text-align_center" data-scope="col" title="First Name " aria-label="First Name"> 
+                            
+                            <div class="slds-truncate" title={contact.Id} > 
+                                <div title={contact.Id} >{contact.FirstName}</div>
+                            </div>
+                        </th>
+                        <th class="slds-text-align_center" data-scope="col" title="Last Name"> 
+                            <div class="slds-truncate" title={contact.Id}>{contact.LastName}</div>
+                        </th>
+                        <th class="slds-text-align_center" data-scope="col" title="Email">
+                            <div class="slds-truncate" title={contact.Id}>{contact.Email}</div>
+                        </th>
+                        <th data-label="Action" data-scope="row">
+                            <div class="slds-truncate slds-text-align_center" title={contact.Id}>
+                                <lightning-button variant="brand" data-key={contact.Id} label="Accept" value={contact.Id} onclick={approvalMethod} class="slds-m-left_x-small" ></lightning-button>
+                                <lightning-button variant="brand" data-key={contact.Id} label="Reject" value={contact.Id} onclick={openModal} class="slds-m-left_x-small"></lightning-button>
+                            </div>
+                        </th>
+
+                    </tr>
+                    
+            </template>
+                <!-- Start of modal window-->
+            <template if:true={bShowModal}>
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                          <!-- modal header start -->
+                        <header class="slds-modal__header">
+                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Save" onclick={openModal} >
+                                <lightning-icon icon-name="utility:close"
+                                   alternative-text="close"
+                                   variant="inverse"
+                                   size="small" ></lightning-icon>
+                                <span class="slds-assistive-text">Save</span>
+                            </button>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="color:green;font: size 200%;font-weight: bold" >REASON FOR REJECTION</h2>
+                        </header>
+
+                        <!-- Text Area-->
+                        <lightning-textarea class="slds-textarea" placeholder="Reason"></lightning-textarea>  
+                          <!-- modal footer start-->
+                        <footer class="slds-modal__footer">
+                                <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <lightning-button label="Save" variant="brand" onclick={saveMethod}></lightning-button>
+                        </footer>
+                       </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+                </template>
+            </template>
+                <!-- End of Modal Window  -->
+        </table>
+    </lightning-card>
+</template>
