@@ -1,5 +1,9 @@
 <template>
     <lightning-card title="Leave Requests" icon-name="action:submit_for_approval">
+            <div class="slds-m-around_medium">  
+                    <lightning-input type="search" onchange={handleKeyChange} class="slds-m-bottom_small" label="Search"  
+                      value={searchKey}></lightning-input>  
+                 </div>
         <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-text-align_centers">
         
             <thead >
@@ -62,14 +66,14 @@
                                 <lightning-icon icon-name="utility:close"
                                    alternative-text="close"
                                    variant="inverse"
-                                   size="small" ></lightning-icon>
+                                   size="small"  onclick={closeModal}></lightning-icon>
                                 <span class="slds-assistive-text">Save</span>
                             </button>
                             <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate" style="color:green;font: size 200%;font-weight: bold" >REASON FOR REJECTION</h2>
                         </header>
 
                         <!-- Text Area-->
-                        <lightning-textarea class="slds-textarea" placeholder="Reason"></lightning-textarea>  
+                        <lightning-textarea class="inputText slds-textarea" placeholder="Reason" value={databinding}></lightning-textarea>
                           <!-- modal footer start-->
                         <footer class="slds-modal__footer">
                                 <lightning-button label="Cancel" variant="neutral" onclick={closeModal}></lightning-button>&nbsp;&nbsp;&nbsp;&nbsp;
